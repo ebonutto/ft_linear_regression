@@ -1,4 +1,4 @@
-def gradient_descent(x, y, iterations, learning_rate):
+def gradient_descent(x, y, learning_rate, iterations):
     m = len(x)
     theta0 = 0.0
     theta1 = 0.0
