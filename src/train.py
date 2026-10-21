@@ -40,18 +40,21 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Train a linear regression model."
     )
-    parser.add_argument("csv_path", help="Path to the training dataset.")
+    parser.add_argument(
+        "csv_path",
+        help="Path to the CSV dataset containing mileage and price data."
+    )
     parser.add_argument(
         "--learning-rate",
         type=positive_float,
         default=DEFAULT_LEARNING_RATE,
-        help=f"Learning rate (default: {DEFAULT_LEARNING_RATE}).",
+        help=f"Gradient descent learning rate (default: {DEFAULT_LEARNING_RATE}).",
     )
     parser.add_argument(
         "--iterations",
         type=positive_int,
         default=DEFAULT_ITERATIONS,
-        help=f"Number of training iterations (default: {DEFAULT_ITERATIONS}).",
+        help=f"Number of gradient descent iterations (default: {DEFAULT_ITERATIONS}).",
     )
     return parser.parse_args()
 
