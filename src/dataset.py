@@ -42,6 +42,6 @@ def normalize(values):
 
 
 def denormalize_thetas(theta0_norm, theta1_norm, mean, std):
-    theta0 = theta0_norm - (theta1_norm * mean) / std
+    theta0 = theta0_norm - theta1_norm * mean / std
     theta1 = theta1_norm / std
     return theta0, theta1
