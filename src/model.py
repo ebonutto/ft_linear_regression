@@ -1,4 +1,4 @@
-def predict_price(mileage, theta0, theta1):
+def estimate_price(mileage, theta0, theta1):
     return theta0 + theta1 * mileage
 
 
@@ -12,7 +12,7 @@ def gradient_descent(x, y, learning_rate, iterations):
         gradient1 = 0.0
 
         for i in range(m):
-            prediction = predict_price(x[i], theta0, theta1)
+            prediction = estimate_price(x[i], theta0, theta1)
             error = prediction - y[i]
 
             gradient0 += error
