@@ -4,57 +4,60 @@ import sys
 
 from dataset import denormalize_thetas, load_data, normalize
 from model import gradient_descent
-from params import save_params
+from params import MODEL_PARAMS_PATH, save_params
 
 DEFAULT_LEARNING_RATE = 0.01
 DEFAULT_ITERATIONS = 1000
 
 
 def positive_float(value):
-    try:
+    try: # Already handled by argparse
         number = float(value)
     except ValueError:
-        raise argparse.ArgumentTypeError(f"must be a number, got {value!r}.")
+        raise argparse.ArgumentTypeError(f"must be a number, got {value!r}")
 
     if not math.isfinite(number) or number <= 0:
         raise argparse.ArgumentTypeError(
-            f"must be a finite number greater than 0, got {value!r}."
+            f"must be a finite number greater than 0, got {value!r}"
         )
     return number
 
 
 def positive_int(value):
-    try:
+    try: # Already handled by argparse
         number = int(value)
     except ValueError:
-        raise argparse.ArgumentTypeError(f"must be an integer, got {value!r}.")
+        raise argparse.ArgumentTypeError(f"must be an integer, got {value!r}")
 
     if number <= 0:
         raise argparse.ArgumentTypeError(
-            f"must be greater than 0, got {value!r}."
+            f"must be greater than 0, got {value!r}"
         )
     return number
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train a linear regression model."
+        description=(
+            "Train a linear regression model that predicts a car's price "
+            f"from its mileage, and save the result to {MODEL_PARAMS_PATH}."
+        ),
     )
     parser.add_argument(
         "csv_path",
-        help="Path to the CSV dataset containing mileage and price data."
+        help="training dataset (CSV with km and price columns)",
     )
     parser.add_argument(
         "--learning-rate",
         type=positive_float,
         default=DEFAULT_LEARNING_RATE,
-        help=f"Gradient descent learning rate (default: {DEFAULT_LEARNING_RATE}).",
+        help=f"gradient descent learning rate (default: {DEFAULT_LEARNING_RATE})",
     )
     parser.add_argument(
         "--iterations",
         type=positive_int,
         default=DEFAULT_ITERATIONS,
-        help=f"Number of gradient descent iterations (default: {DEFAULT_ITERATIONS}).",
+        help=f"number of gradient descent iterations (default: {DEFAULT_ITERATIONS})",
     )
     return parser.parse_args()
 
@@ -72,7 +75,7 @@ def main():
             args.iterations,
         )
         theta0, theta1 = denormalize_thetas(theta0_norm, theta1_norm, mean, std)
-        save_params(theta0, theta1)
+        save_params(MODEL_PARAMS_PATH, theta0, theta1)
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
