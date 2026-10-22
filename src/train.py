@@ -11,11 +11,7 @@ DEFAULT_ITERATIONS = 1000
 
 
 def positive_float(value):
-    try: # Already handled by argparse
-        number = float(value)
-    except ValueError:
-        raise argparse.ArgumentTypeError(f"must be a number, got {value!r}")
-
+    number = float(value)
     if not math.isfinite(number) or number <= 0:
         raise argparse.ArgumentTypeError(
             f"must be a finite number greater than 0, got {value!r}"
@@ -24,11 +20,7 @@ def positive_float(value):
 
 
 def positive_int(value):
-    try: # Already handled by argparse
-        number = int(value)
-    except ValueError:
-        raise argparse.ArgumentTypeError(f"must be an integer, got {value!r}")
-
+    number = int(value)
     if number <= 0:
         raise argparse.ArgumentTypeError(
             f"must be greater than 0, got {value!r}"
