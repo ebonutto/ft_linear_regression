@@ -10,7 +10,7 @@ def load_data(path):
 
         if reader.fieldnames != ["km", "price"]:
             raise ValueError(
-                f"Invalid headers: expected ['km', 'price'], got {reader.fieldnames}."
+                f"invalid headers: expected ['km', 'price'], got {reader.fieldnames}"
             )
 
         for row in reader:
@@ -18,10 +18,10 @@ def load_data(path):
                 mileage.append(float(row["km"]))
                 price.append(float(row["price"]))
             except (TypeError, ValueError) as e:
-                raise ValueError(f"Invalid row: {row} ({e}).") from e
+                raise ValueError(f"invalid row: {row} ({e})") from e
 
     if not mileage:
-        raise ValueError("The file contains no data.")
+        raise ValueError("the file contains no data")
 
     return mileage, price
 
@@ -34,7 +34,7 @@ def normalize(values):
 
     if std == 0:
         raise ValueError(
-            "Cannot normalize: all values are identical (standard deviation is 0)."
+            "cannot normalize: all values are identical (standard deviation is 0)"
         )
 
     normalized = [(x - mean) / std for x in values]
