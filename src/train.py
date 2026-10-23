@@ -5,6 +5,7 @@ import sys
 from dataset import denormalize_thetas, load_data, normalize
 from model import gradient_descent
 from params import MODEL_PARAMS_PATH, save_params
+from plot import plot_fit
 
 DEFAULT_LEARNING_RATE = 0.01
 DEFAULT_ITERATIONS = 1000
@@ -75,6 +76,8 @@ def main():
     print("Training complete.")
     print(f"theta0: {theta0:.4f}")
     print(f"theta1: {theta1:.4f}")
+
+    plot_fit(mileage, price, theta0, theta1)
 
 
 if __name__ == "__main__":
