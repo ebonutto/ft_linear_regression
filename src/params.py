@@ -13,4 +13,17 @@ def save_params(path, theta0, theta1):
 def load_params(path):
     with open(path, "r") as f:
         params = json.load(f)
-    return float(params["theta0"]), float(params["theta1"])
+
+    if not isinstance(params, dict):
+        raise ValueError("model parameters must be a JSON object")
+
+    try:
+        theta0 = float(params["theta0"])
+        theta1 = float(params["theta1"])
+    except (KeyError, TypeError, ValueError) as e:
+        raise ValueError("invalid model parameters") from e
+
+    if not (math.isfinite(theta0) and math.isfinite(theta1)):
+        raise ValueError("model parameters must be finite numbers")
+
+    return theta0, theta1

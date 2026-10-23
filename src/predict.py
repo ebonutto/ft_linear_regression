@@ -20,6 +20,9 @@ def main():
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
+    except EOFError:
+        print("\nError: input interrupted", file=sys.stderr)
+        sys.exit(1)
 
     price = estimate_price(mileage, theta0, theta1)
     print(f"Estimated price: {price:.2f}")
