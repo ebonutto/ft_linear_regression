@@ -10,7 +10,8 @@ def load_data(path):
 
         if reader.fieldnames != ["km", "price"]:
             raise ValueError(
-                f"invalid CSV headers: expected ['km', 'price'], got {reader.fieldnames}"
+                "invalid CSV headers: expected ['km', 'price'], "
+                f"got {reader.fieldnames}"
             )
 
         for row in reader:
@@ -34,7 +35,8 @@ def normalize(values):
 
     if std == 0:
         raise ValueError(
-            "cannot normalize: all values are identical (standard deviation is 0)"
+            "cannot normalize: all values are identical "
+            "(standard deviation is 0)"
         )
 
     normalized = [(x - mean) / std for x in values]
