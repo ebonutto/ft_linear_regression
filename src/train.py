@@ -85,7 +85,7 @@ def main():
             mean,
             std,
         )
-        save_params(MODEL_PARAMS_PATH, theta0, theta1)
+        save_params(theta0, theta1)
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
