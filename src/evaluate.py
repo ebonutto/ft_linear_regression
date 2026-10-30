@@ -69,7 +69,7 @@ def main():
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"R²:   {r2:.4f}")
+    print(f"R²:   {r2:.4f} ({r2 * 100:.2f}%)")
     print(f"MAE:  {mae:.2f} €")
     print(f"RMSE: {rmse:.2f} €")
 
