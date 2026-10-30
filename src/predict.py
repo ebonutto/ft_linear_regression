@@ -16,7 +16,7 @@ def ask_mileage():
 
 def main():
     try:
-        theta0, theta1 = load_params()
+        theta0, theta1, _ = load_params()
         mileage = ask_mileage()
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
