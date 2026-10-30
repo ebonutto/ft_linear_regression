@@ -73,7 +73,7 @@ def main():
     try:
         mileage, price = load_data(args.csv_path)
         mileage_norm, mean, std = normalize(mileage)
-        theta0_norm, theta1_norm = gradient_descent(
+        theta0_norm, theta1_norm, cost_history = gradient_descent(
             mileage_norm,
             price,
             args.learning_rate,
@@ -85,7 +85,7 @@ def main():
             mean,
             std,
         )
-        save_params(theta0, theta1)
+        save_params(theta0, theta1, cost_history)
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

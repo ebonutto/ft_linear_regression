@@ -33,17 +33,28 @@ def plot_fit(mileage, price, theta0, theta1):
     plt.show()
 
 
+def plot_cost_history(cost_history):
+    plt.figure()
+    plt.plot(range(len(cost_history)), cost_history)
+    plt.title("Cost history")
+    plt.xlabel("Iterations")
+    plt.ylabel("Cost")
+    plt.grid(True)
+    plt.show()
+
+
 def main():
     args = parse_args()
 
     try:
         mileage, price = load_data(args.csv_path)
-        theta0, theta1 = load_params()
+        theta0, theta1, cost_history = load_params()
     except (OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
     plot_fit(mileage, price, theta0, theta1)
+    plot_cost_history(cost_history)
 
 
 if __name__ == "__main__":

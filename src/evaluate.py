@@ -60,7 +60,7 @@ def main():
 
     try:
         mileage, prices = load_data(args.csv_path)
-        theta0, theta1 = load_params()
+        theta0, theta1, _ = load_params()
 
         r2 = calculate_r2(mileage, prices, theta0, theta1)
         mae = calculate_mae(mileage, prices, theta0, theta1)
