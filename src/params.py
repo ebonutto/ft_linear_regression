@@ -20,7 +20,7 @@ def load_params(path=MODEL_PARAMS_PATH):
     try:
         theta0 = float(params["theta0"])
         theta1 = float(params["theta1"])
-    except (KeyError, TypeError, ValueError) as e:
+    except (KeyError, OverflowError, TypeError, ValueError) as e:
         raise ValueError("invalid model parameters") from e
 
     if not (math.isfinite(theta0) and math.isfinite(theta1)):
