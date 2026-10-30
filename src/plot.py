@@ -3,9 +3,9 @@ import sys
 
 import matplotlib.pyplot as plt
 
+from dataset import load_data
 from model import estimate_price
 from params import load_params
-from dataset import load_data
 
 
 def parse_args():

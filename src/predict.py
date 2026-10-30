@@ -1,7 +1,7 @@
 import sys
 
-from params import load_params
 from model import estimate_price
+from params import load_params
 
 
 def ask_mileage():
