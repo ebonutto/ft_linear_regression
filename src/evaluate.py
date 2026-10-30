@@ -41,7 +41,10 @@ def calculate_rmse(mileage, prices, theta0, theta1):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Evaluate the linear regression model."
+        description=(
+            "Evaluate the model saved by train.py on a dataset: "
+            "print the R² score, and the MAE and RMSE in price units."
+        ),
     )
 
     parser.add_argument(

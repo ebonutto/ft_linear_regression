@@ -10,12 +10,12 @@ from params import load_params
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Plot the training data and the regression line."
+        description="Plot a dataset and the line saved by train.py."
     )
 
     parser.add_argument(
         "csv_path",
-        help="path to the training dataset (CSV with km and price columns)",
+        help="dataset to plot (CSV with km and price columns)",
     )
 
     return parser.parse_args()
