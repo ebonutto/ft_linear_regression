@@ -41,7 +41,7 @@ def plot_cost_history(cost_history):
     plt.plot(range(len(cost_history)), cost_history)
     plt.title("Training cost history by iterations")
     plt.xlabel("Iterations")
-    plt.ylabel("Cost (€)")
+    plt.ylabel("Cost (€²)")
     plt.grid(True)
 
 

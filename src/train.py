@@ -35,8 +35,8 @@ def positive_int(value):
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Train a linear regression model that predicts a car's price "
-            "from its mileage, and save the parameters to "
+            "Train a linear regression model that predicts a car's price (€) "
+            "from its mileage (km), and save the parameters to "
             f"{MODEL_PARAMS_PATH}."
         ),
     )
@@ -91,8 +91,8 @@ def main():
         sys.exit(1)
 
     print("Training complete.")
-    print(f"theta0:     {theta0:.4f}")
-    print(f"theta1:     {theta1:.4f}")
+    print(f"theta0:     {theta0:.4f} €")
+    print(f"theta1:     {theta1:.4f} €/km")
     print(f"Final cost: {cost_history[-1]:.4f}")
 
 

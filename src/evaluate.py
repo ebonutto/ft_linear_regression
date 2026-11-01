@@ -43,7 +43,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description=(
             "Evaluate the model saved by train.py on a dataset: "
-            "print the R² score, and the MAE and RMSE in price units."
+            "print the R² score, and the MAE and RMSE in price units (€)."
         ),
     )
 
