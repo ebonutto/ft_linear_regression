@@ -93,7 +93,7 @@ def main():
     print("Training complete.")
     print(f"theta0:     {theta0:.4f} €")
     print(f"theta1:     {theta1:.4f} €/km")
-    print(f"Final cost: {cost_history[-1]:.4f}")
+    print(f"Final cost: {cost_history[-1]:.4f} €²")
 
 
 if __name__ == "__main__":
