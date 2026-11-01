@@ -10,7 +10,10 @@ from params import load_params
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Plot a dataset and the line saved by train.py."
+        description=(
+            "Plot a dataset with the line saved by train.py, "
+            "and the cost recorded during training."
+        )
     )
 
     parser.add_argument(
@@ -27,20 +30,19 @@ def plot_fit(mileage, price, theta0, theta1):
 
     plt.scatter(mileage, price, marker="+", label="data")
     plt.plot(line_x, line_y, color="red", label="model")
-    plt.xlabel("mileage (km)")
-    plt.ylabel("price (€)")
+    plt.title("Price by mileage")
+    plt.xlabel("Mileage (km)")
+    plt.ylabel("Price (€)")
     plt.legend()
-    plt.show()
 
 
 def plot_cost_history(cost_history):
     plt.figure()
     plt.plot(range(len(cost_history)), cost_history)
-    plt.title("Cost history")
+    plt.title("Training cost history by iterations")
     plt.xlabel("Iterations")
-    plt.ylabel("Cost")
+    plt.ylabel("Cost (€)")
     plt.grid(True)
-    plt.show()
 
 
 def main():
@@ -55,6 +57,7 @@ def main():
 
     plot_fit(mileage, price, theta0, theta1)
     plot_cost_history(cost_history)
+    plt.show()
 
 
 if __name__ == "__main__":
